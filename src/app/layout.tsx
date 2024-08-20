@@ -8,8 +8,8 @@ import { theme } from "@/configs";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "VocaBuilder",
-  description: "10,000語以上の単語で英語力を向上させるアプリ",
+  title: "Kohei Okamoto",
+  description: "Kohei Okamoto's personal website",
 };
 
 type RootLayoutProps = Readonly<{
