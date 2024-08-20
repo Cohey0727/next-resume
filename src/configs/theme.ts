@@ -14,7 +14,16 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Inter", "Arial", "sans-serif"].join(","),
+    fontFamily: ["Caveat", "Inter", "Arial", "sans-serif"].join(","),
+  },
+  components: {
+    MuiChip: {
+      styleOverrides: {
+        label: {
+          fontFamily: ["Inter", "Arial", "sans-serif"].join(","),
+        },
+      },
+    },
   },
 });
 

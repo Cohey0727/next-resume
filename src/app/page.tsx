@@ -4,7 +4,7 @@ import { Box, Typography, Button, Container } from "@mui/material";
 
 import styles from "./page.styles";
 import { resumeEn } from "@/data";
-import CareerHistoryTimeline from "@/components/CareerHistoryTimeline/CareerHistoryTimeline";
+import CareerHistoryList from "@/components/CareerHistoryList/CareerHistoryList";
 
 const mapProgress = (progress: number, range: [number, number]) => {
   const [start, end] = range;
@@ -25,7 +25,7 @@ const Page: React.FC = () => {
         <Typography variant="h2" align="center" sx={styles.featureTitle}>
           Kohei Okamoto
         </Typography>
-        <CareerHistoryTimeline resume={resumeEn} />
+        <CareerHistoryList resume={resumeEn} />
       </Box>
     </Box>
   );

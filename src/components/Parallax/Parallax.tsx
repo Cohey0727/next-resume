@@ -20,10 +20,6 @@ const Parallax = (props: ParallaxProps) => {
   const [innerStyle, setInnerStyle] = useState<CSSProperties>({});
 
   useEffect(() => {
-    console.log({
-      "containerRef.current.getBoundingClientRect()":
-        backgroundRef.current?.getBoundingClientRect(),
-    });
     backgroundRef.current && setHeight(backgroundRef.current.getBoundingClientRect().height);
     const observer = new ResizeObserver(() => {
       backgroundRef.current && setHeight(backgroundRef.current.getBoundingClientRect().height);
@@ -114,7 +110,7 @@ const Parallax = (props: ParallaxProps) => {
       <div
         ref={innerRef}
         style={{
-          height: height,
+          height: "100vh",
           ...parallaxStyle,
           ...innerStyle,
         }}
