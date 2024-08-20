@@ -1,6 +1,18 @@
 import { Resume } from "@/models/resume";
 
-const resumeEn: Resume = {
+// Update the Resume type to include the new duration structure
+type NormalizedResume = Omit<Resume, "careerHistory"> & {
+  careerHistory: Array<
+    Omit<Resume["careerHistory"][number], "duration"> & {
+      duration: {
+        start: string;
+        end: string | null;
+      };
+    }
+  >;
+};
+
+const resumeEn: NormalizedResume = {
   name: "Kohei Okamoto",
   contact: {
     email: "ohayousagi.ac.kook0727@gmail.com",
@@ -12,7 +24,10 @@ const resumeEn: Resume = {
     {
       position: "Front End Developer",
       company: "Base Food Inc.",
-      duration: "Aug 2023 - Present (10 months)",
+      duration: {
+        start: "2023-08",
+        end: null,
+      },
       responsibilities: [
         "Frontend implementation and design (Internal Service Startup)",
         "Frontend infrastructure implementation and design (EC Site Replacement)",
@@ -24,7 +39,10 @@ const resumeEn: Resume = {
     {
       position: "Full Stack Developer",
       company: "Hokan Inc.",
-      duration: "Nov 2022 - Jun 2023 (8 months)",
+      duration: {
+        start: "2022-11",
+        end: "2023-06",
+      },
       responsibilities: [
         "Frontend implementation and design",
         "Backend implementation and design",
@@ -38,7 +56,10 @@ const resumeEn: Resume = {
     {
       position: "Applications Engineer",
       company: "SOMPO Holdings",
-      duration: "Sep 2022 - Nov 2022 (3 months)",
+      duration: {
+        start: "2022-09",
+        end: "2022-11",
+      },
       responsibilities: [
         "App implementation and design (iOS, Android)",
         "Backend implementation and design",
@@ -49,7 +70,10 @@ const resumeEn: Resume = {
     {
       position: "Full Stack Software Engineer",
       company: "Hokan Inc.",
-      duration: "Oct 2018 - Feb 2022 (3 years 5 months)",
+      duration: {
+        start: "2018-10",
+        end: "2022-02",
+      },
       responsibilities: [
         "Feature development",
         "Requirements definition",
@@ -80,7 +104,10 @@ const resumeEn: Resume = {
     {
       position: "Full Stack Software Engineer",
       company: "Works Applications Co., Ltd.",
-      duration: "Apr 2016 - Oct 2018 (2 years 7 months)",
+      duration: {
+        start: "2016-04",
+        end: "2018-10",
+      },
       responsibilities: [
         "Handling inquiries",
         "Adding and modifying frontend and backend features",
@@ -133,7 +160,7 @@ const resumeEn: Resume = {
   ],
 };
 
-const resumeJa: Resume = {
+const resumeJa: NormalizedResume = {
   name: "岡本 孝平",
   contact: {
     email: "ohayousagi.ac.kook0727@gmail.com",
@@ -145,7 +172,10 @@ const resumeJa: Resume = {
     {
       position: "フロントエンドデベロッパー",
       company: "Base Food株式会社",
-      duration: "2023年8月 - 現在 (10ヶ月)",
+      duration: {
+        start: "2023-08",
+        end: null,
+      },
       responsibilities: [
         "フロントエンドの実装と設計（内部サービスのスタートアップ）",
         "フロントエンドインフラの実装と設計（ECサイトのリプレイス）",
@@ -157,7 +187,10 @@ const resumeJa: Resume = {
     {
       position: "フルスタックデベロッパー",
       company: "Hokan株式会社",
-      duration: "2022年11月 - 2023年6月 (8ヶ月)",
+      duration: {
+        start: "2022-11",
+        end: "2023-06",
+      },
       responsibilities: [
         "フロントエンドの実装と設計",
         "バックエンドの実装と設計",
@@ -171,7 +204,10 @@ const resumeJa: Resume = {
     {
       position: "アプリケーションエンジニア",
       company: "SOMPOホールディングス",
-      duration: "2022年9月 - 2022年11月 (3ヶ月)",
+      duration: {
+        start: "2022-09",
+        end: "2022-11",
+      },
       responsibilities: ["アプリの実装と設計（iOS, Android）", "バックエンドの実装と設計"],
       skillsAcquired: ["Flutter", "Python"],
       achievements: [],
@@ -179,7 +215,10 @@ const resumeJa: Resume = {
     {
       position: "フルスタックソフトウェアエンジニア",
       company: "Hokan株式会社",
-      duration: "2018年10月 - 2022年2月 (3年5ヶ月)",
+      duration: {
+        start: "2018-10",
+        end: "2022-02",
+      },
       responsibilities: [
         "機能開発",
         "要件定義",
@@ -210,7 +249,10 @@ const resumeJa: Resume = {
     {
       position: "フルスタックソフトウェアエンジニア",
       company: "ワークスアプリケーションズ株式会社",
-      duration: "2016年4月 - 2018年10月 (2年7ヶ月)",
+      duration: {
+        start: "2016-04",
+        end: "2018-10",
+      },
       responsibilities: [
         "問い合わせ対応",
         "フロントエンドとバックエンド機能の追加と修正",

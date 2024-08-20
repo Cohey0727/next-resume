@@ -17,7 +17,7 @@ export type Contact = {
 export type CareerHistory = {
   position: string;
   company: string;
-  duration: string;
+  duration: { start: string; end: string | null };
   responsibilities: string[];
   skillsAcquired: string[];
   achievements: string[];
