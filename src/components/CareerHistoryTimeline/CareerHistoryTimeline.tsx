@@ -8,19 +8,20 @@ import {
   TimelineDot,
   TimelineOppositeContent,
 } from "@mui/lab";
-import { Typography, Paper, List, ListItem, ListItemText } from "@mui/material";
+import { Typography, Paper, List, ListItem, ListItemText, Box, Chip } from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
-import { styles } from "./CareerHistoryTimeline.styles";
+import styles from "./CareerHistoryTimeline.styles";
 import { Resume } from "@/models/resume";
 
-type CareerHistoryTimelineProps = {
+interface CareerHistoryTimelineProps {
   resume: Resume;
-};
+}
 
-const CareerHistoryTimeline: React.FC<CareerHistoryTimelineProps> = ({ resume }) => {
+const CareerHistoryTimeline: React.FC<CareerHistoryTimelineProps> = (props) => {
+  const { resume } = props;
   return (
-    <Timeline position="alternate">
-      {resume.careerHistory.map((career, index: number) => (
+    <Timeline position="right" sx={styles.timeline}>
+      {resume.careerHistory.map((career, index) => (
         <TimelineItem key={index}>
           <TimelineOppositeContent>
             <Typography variant="body2" color="textSecondary">
@@ -28,51 +29,63 @@ const CareerHistoryTimeline: React.FC<CareerHistoryTimelineProps> = ({ resume })
             </Typography>
           </TimelineOppositeContent>
           <TimelineSeparator>
-            <TimelineDot color="primary">
+            <TimelineDot color="primary" sx={styles.timelineDot}>
               <WorkIcon />
             </TimelineDot>
-            {index !== resume.careerHistory.length - 1 && <TimelineConnector />}
+            {index !== resume.careerHistory.length - 1 && (
+              <TimelineConnector sx={styles.timelineConnector} />
+            )}
           </TimelineSeparator>
           <TimelineContent>
             <Paper elevation={3} sx={styles.paper}>
-              <Typography variant="h6" component="h3">
-                {career.position}
-              </Typography>
-              <Typography>{career.company}</Typography>
-              <Typography variant="subtitle1" sx={styles.subtitle}>
-                Responsibilities:
-              </Typography>
-              <List dense>
-                {career.responsibilities.map((resp: string, respIndex: number) => (
-                  <ListItem key={respIndex}>
-                    <ListItemText primary={resp} />
-                  </ListItem>
-                ))}
-              </List>
-              {career.achievements.length > 0 && (
-                <>
-                  <Typography variant="subtitle1" sx={styles.subtitle}>
-                    Achievements:
-                  </Typography>
-                  <List dense>
-                    {career.achievements.map((achievement: string, achieveIndex: number) => (
-                      <ListItem key={achieveIndex}>
-                        <ListItemText primary={achievement} />
-                      </ListItem>
-                    ))}
-                  </List>
-                </>
-              )}
-              {career.skillsAcquired.length > 0 && (
-                <>
-                  <Typography variant="subtitle1" sx={styles.subtitle}>
-                    Skills Acquired:
-                  </Typography>
-                  <Typography variant="body2" sx={styles.skillsText}>
-                    {career.skillsAcquired.join(", ")}
-                  </Typography>
-                </>
-              )}
+              <Box sx={styles.content}>
+                <Typography variant="h6" component="h3" sx={styles.jobTitle}>
+                  {career.position}
+                </Typography>
+                <Typography sx={styles.company}>{career.company}</Typography>
+                <Typography variant="subtitle1" sx={styles.subtitle}>
+                  Responsibilities
+                </Typography>
+                <List dense sx={styles.list}>
+                  {career.responsibilities.map((resp: string, respIndex: number) => (
+                    <ListItem key={respIndex} sx={styles.listItem}>
+                      <ListItemText primary={resp} />
+                    </ListItem>
+                  ))}
+                </List>
+                {career.achievements.length > 0 && (
+                  <>
+                    <Typography variant="subtitle1" sx={styles.subtitle}>
+                      Achievements
+                    </Typography>
+                    <List dense sx={styles.list}>
+                      {career.achievements.map((achievement: string, achieveIndex: number) => (
+                        <ListItem key={achieveIndex} sx={styles.listItem}>
+                          <ListItemText primary={achievement} />
+                        </ListItem>
+                      ))}
+                    </List>
+                  </>
+                )}
+                {career.skillsAcquired.length > 0 && (
+                  <>
+                    <Typography variant="subtitle1" sx={styles.subtitle}>
+                      Skills Acquired
+                    </Typography>
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
+                      {career.skillsAcquired.map((skill, index) => (
+                        <Chip
+                          key={index}
+                          label={skill}
+                          size="small"
+                          color="primary"
+                          variant="outlined"
+                        />
+                      ))}
+                    </Box>
+                  </>
+                )}
+              </Box>
             </Paper>
           </TimelineContent>
         </TimelineItem>
@@ -81,5 +94,4 @@ const CareerHistoryTimeline: React.FC<CareerHistoryTimelineProps> = ({ resume })
   );
 };
 
-export type { CareerHistoryTimelineProps };
 export default CareerHistoryTimeline;

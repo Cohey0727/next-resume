@@ -88,11 +88,7 @@ const resumeEn: Resume = {
         "Conducting reviews and QA",
         "Proposing new features",
       ],
-      skillsAcquired: [
-        "Basic and advanced Java",
-        "Basic Database management",
-        "Basic and advanced JavaScript",
-      ],
+      skillsAcquired: ["Java", "Database", "JavaScript", "jQuery"],
       achievements: [
         "Achieved the highest ticket resolution rate in the department",
         "Developed a system for managing employment types based on attendance",
@@ -222,11 +218,7 @@ const resumeJa: Resume = {
         "レビューと品質保証",
         "新機能の提案",
       ],
-      skillsAcquired: [
-        "基本および応用Java",
-        "基本的なデータベース管理",
-        "基本および応用JavaScript",
-      ],
+      skillsAcquired: ["Java", "Database", "JavaScript", "jQuery"],
       achievements: [
         "部署内で最も高いチケット解決率を達成",
         "雇用形態を管理するシステムを開発し、新たな法令に対応",
