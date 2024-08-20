@@ -3,19 +3,34 @@ import { useRef, useEffect, useState, useMemo, CSSProperties } from "react";
 
 type ParallaxProps = {
   children: (progress: number) => React.ReactNode;
-  frame: number;
+  background: React.ReactNode;
   anchor?: "top" | "bottom";
 };
 
 type ParallaxPosition = "top" | "sticky" | "bottom";
 
 const Parallax = (props: ParallaxProps) => {
-  const { children, frame, anchor = "top" } = props;
+  const { children, background, anchor = "top" } = props;
   const [progress, setProgress] = useState(0);
+  const [height, setHeight] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const [parallaxPosition, setParallaxPosition] = useState<ParallaxPosition>("top");
   const [innerStyle, setInnerStyle] = useState<CSSProperties>({});
+
+  useEffect(() => {
+    console.log({
+      "containerRef.current.getBoundingClientRect()":
+        backgroundRef.current?.getBoundingClientRect(),
+    });
+    backgroundRef.current && setHeight(backgroundRef.current.getBoundingClientRect().height);
+    const observer = new ResizeObserver(() => {
+      backgroundRef.current && setHeight(backgroundRef.current.getBoundingClientRect().height);
+    });
+    backgroundRef.current && observer.observe(backgroundRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const updateInnerStyle = () => {
@@ -91,14 +106,15 @@ const Parallax = (props: ParallaxProps) => {
     <div
       ref={containerRef}
       style={{
-        height: `${frame * 100}vh`,
+        height: height,
         position: "relative",
       }}
     >
+      <div ref={backgroundRef}>{background}</div>
       <div
         ref={innerRef}
         style={{
-          height: `${Math.min(frame, 1) * 100}vh`,
+          height: height,
           ...parallaxStyle,
           ...innerStyle,
         }}
