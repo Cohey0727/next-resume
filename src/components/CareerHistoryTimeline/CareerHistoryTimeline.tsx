@@ -12,7 +12,18 @@ interface CareerHistoryTimelineProps {
 const CareerHistoryTimeline: React.FC<CareerHistoryTimelineProps> = (props) => {
   const { resume } = props;
   return (
-    <Parallax background={<div style={{ height: "1000vh" }} />}>
+    <Parallax
+      background={
+        <div
+          style={{
+            height: "1000svh",
+            backgroundImage:
+              "linear-gradient(to bottom, #f0f0f0 0px, #f0f0f0 50px, #e0e0e0 50px, #e0e0e0 100px)",
+            backgroundSize: "100px 200px",
+          }}
+        />
+      }
+    >
       {(progress) => {
         return (
           <Box sx={styles.root}>
