@@ -2,7 +2,6 @@ import React from "react";
 import {
   TimelineItem,
   TimelineSeparator,
-  TimelineConnector,
   TimelineContent,
   TimelineDot,
   TimelineOppositeContent,
