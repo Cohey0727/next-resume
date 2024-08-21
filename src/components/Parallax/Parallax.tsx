@@ -58,7 +58,7 @@ const Parallax = (props: ParallaxProps) => {
 
       if (refTop > 0) {
         setParallaxPosition("top");
-      } else if (refBottom < window.innerHeight) {
+      } else if (refBottom < windowHeight) {
         setParallaxPosition("bottom");
       } else {
         setParallaxPosition("sticky");
@@ -67,7 +67,7 @@ const Parallax = (props: ParallaxProps) => {
         if (anchor === "top") {
           setProgress(Math.min(Math.max(0, (-refTop + windowHeight) / containerHeight), 1));
         } else {
-          setProgress(Math.min(Math.max(0, (-refBottom + windowHeight) / containerHeight), 1));
+          setProgress(Math.min(Math.max(0, (-refTop + windowHeight) / containerHeight), 1));
         }
       }
     };

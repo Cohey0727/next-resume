@@ -33,16 +33,17 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
 
   return (
     <Parallax
-      anchor="top"
+      anchor="bottom"
       background={
         <div>
           {resume.careerHistory.map((career, index) => {
+            const positionIndex = index + 1;
             const durationText = career.duration.end
               ? `${formatDate(career.duration.start)} - ${formatDate(career.duration.end)}`
               : `${formatDate(career.duration.start)} - ${locale === "ja" ? "現在" : "Present"}`;
             return (
               <Typography
-                key={index}
+                key={positionIndex}
                 variant="body2"
                 color="textSecondary"
                 sx={{ display: "block", width: "200px", height: "100lvh" }}
@@ -58,18 +59,20 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
         return (
           <Box sx={styles.root}>
             {resume.careerHistory.map((career, index) => {
+              const positionIndex = index + 1;
               const itemProgress =
                 1 -
                 Math.max(
                   0,
                   Math.min(
                     1,
-                    (progress - index / resume.careerHistory.length) * resume.careerHistory.length,
+                    (progress - positionIndex / resume.careerHistory.length) *
+                      resume.careerHistory.length,
                   ),
                 );
               return (
                 <Box
-                  key={index}
+                  key={positionIndex}
                   sx={{
                     transform: [
                       `translateX(${(1 - itemProgress) * 100}%)`,
@@ -80,7 +83,7 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
                     width: "100%",
                     height: "100%",
                     position: "absolute",
-                    zIndex: resume.careerHistory.length - index,
+                    zIndex: resume.careerHistory.length - positionIndex,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
