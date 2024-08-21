@@ -3,6 +3,7 @@ import { Typography, Paper, List, ListItem, ListItemText, Box, Chip, Grid } from
 import { CareerHistory } from "@/models/resume";
 import { format } from "date-fns";
 import styles from "./CareerHistoryListItem.styles";
+import { style } from "@mui/system";
 
 type CareerHistoryListItemProps = {
   career: CareerHistory;
@@ -47,33 +48,37 @@ const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career })
         <Typography variant="h6" sx={styles.sectionTitle}>
           Responsibilities
         </Typography>
-        <List disablePadding>
-          {career.responsibilities.map((resp, index) => (
-            <ListItem key={index} disablePadding sx={styles.listItem}>
-              <ListItemText primary={resp} sx={styles.listItemText} />
-            </ListItem>
-          ))}
-        </List>
+        <Box sx={styles.sectionBodyContainer}>
+          <List disablePadding>
+            {career.responsibilities.map((resp, index) => (
+              <ListItem key={index} disablePadding sx={styles.listItem}>
+                <ListItemText primary={resp} sx={styles.listItemText} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
       </Box>
 
       <Box sx={styles.sectionContainer}>
         <Typography variant="h6" sx={styles.sectionTitle}>
           Achievements
         </Typography>
-        <List disablePadding>
-          {career.achievements.map((achievement, index) => (
-            <ListItem key={index} disablePadding sx={styles.listItem}>
-              <ListItemText primary={achievement} sx={styles.listItemText} />
-            </ListItem>
-          ))}
-        </List>
+        <Box sx={styles.sectionBodyContainer}>
+          <List disablePadding>
+            {career.achievements.map((achievement, index) => (
+              <ListItem key={index} disablePadding sx={styles.listItem}>
+                <ListItemText primary={achievement} sx={styles.listItemText} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
       </Box>
 
       <Box sx={styles.sectionContainer}>
         <Typography variant="h6" sx={styles.sectionTitle}>
           Skills Acquired
         </Typography>
-        <Box sx={styles.skillsContainer}>
+        <Box sx={{ ...styles.skillsContainer, ...styles.sectionBodyContainer }}>
           {career.skillsAcquired.map((skill, index) => (
             <Chip key={index} label={skill} sx={styles.skill} />
           ))}

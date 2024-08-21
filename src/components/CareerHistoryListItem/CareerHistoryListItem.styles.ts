@@ -36,6 +36,9 @@ const styles = {
     marginTop: (theme) => theme.spacing(3),
     py: 1,
   },
+  sectionBodyContainer: {
+    pt: 1,
+  },
   sectionTitle: {
     fontWeight: "bold",
     fontFamily: "Roboto",
@@ -53,7 +56,6 @@ const styles = {
     display: "flex",
     flexWrap: "wrap",
     gap: (theme) => theme.spacing(1),
-    py: 1,
   },
   skill: {
     backgroundColor: (theme) => theme.palette.background.default,
