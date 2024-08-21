@@ -25,7 +25,7 @@ const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career })
             {career.company}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={6}>
           <Typography variant="subtitle2" sx={styles.label}>
             Position
           </Typography>
@@ -33,7 +33,7 @@ const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career })
             {career.position}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={6}>
           <Typography variant="subtitle2" sx={styles.label}>
             Duration
           </Typography>

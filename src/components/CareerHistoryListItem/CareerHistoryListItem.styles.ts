@@ -5,11 +5,11 @@ const styles = {
     padding: (theme) => theme.spacing(3),
     marginBottom: (theme) => theme.spacing(3),
     height: {
-      xs: "100vw",
+      xs: "143vw",
       md: "100vh",
     },
     width: {
-      xs: "70vw",
+      xs: "100vw",
       md: "70vh",
     },
     overflow: "auto",

@@ -11,12 +11,7 @@ interface CareerHistoryListProps {
   resume: Resume;
 }
 
-const locale: string = "en";
-
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return locale === "ja" ? format(date, "yyyy年MM月", { locale: ja }) : format(date, "MMM yyyy");
-};
+const formatDate = (dateString: string) => format(new Date(dateString), "MMM yyyy");
 
 const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
   const { resume } = props;
@@ -40,7 +35,7 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
             const positionIndex = index + 1;
             const durationText = career.duration.end
               ? `${formatDate(career.duration.start)} - ${formatDate(career.duration.end)}`
-              : `${formatDate(career.duration.start)} - ${locale === "ja" ? "現在" : "Present"}`;
+              : `${formatDate(career.duration.start)} - Present`;
             return (
               <Typography
                 key={positionIndex}
@@ -74,11 +69,20 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
                 <Box
                   key={positionIndex}
                   sx={{
-                    transform: [
-                      `translateX(${(1 - itemProgress) * 100}%)`,
-                      `rotate(${tilts[index]}deg)`,
-                      `translate(${offsets[index][0]}px, ${offsets[index][1]}px)`,
-                    ].join(" "),
+                    transform: {
+                      xs: [
+                        `translateX(${(1 - itemProgress) * 100}%)`,
+                        `rotate(${tilts[index]}deg)`,
+                        `translate(${offsets[index][0]}px, ${offsets[index][1]}px)`,
+                        `scale(0.92)`,
+                      ].join(" "),
+                      md: [
+                        `translateX(${(1 - itemProgress) * 100}%)`,
+                        `rotate(${tilts[index]}deg)`,
+                        `translate(${offsets[index][0]}px, ${offsets[index][1]}px)`,
+                        `scale(0.8)`,
+                      ].join(" "),
+                    },
                     transition: "transform 0.5s ease-out, opacity 0.5s ease-out",
                     width: "100%",
                     height: "100%",
