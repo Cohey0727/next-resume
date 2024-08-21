@@ -1,6 +1,5 @@
 import { keyframes } from "@mui/system";
 import { SxProps, Theme } from "@mui/material/styles";
-import { title } from "process";
 
 const fadeIn = keyframes`
   from {

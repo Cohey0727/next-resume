@@ -4,14 +4,10 @@ import { Resume } from "@/models/resume";
 import CareerHistoryListItem from "../CareerHistoryListItem";
 import Parallax from "../Parallax";
 import { Box, Typography } from "@mui/material";
-import { format } from "date-fns";
-import { ja } from "date-fns/locale";
 
 interface CareerHistoryListProps {
   resume: Resume;
 }
-
-const formatDate = (dateString: string) => format(new Date(dateString), "MMM yyyy");
 
 const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
   const { resume } = props;
