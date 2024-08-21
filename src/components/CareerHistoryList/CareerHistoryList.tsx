@@ -58,13 +58,15 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
         return (
           <Box sx={styles.root}>
             {resume.careerHistory.map((career, index) => {
-              const itemProgress = Math.max(
-                0,
-                Math.min(
-                  1,
-                  (progress - index / resume.careerHistory.length) * resume.careerHistory.length,
-                ),
-              );
+              const itemProgress =
+                1 -
+                Math.max(
+                  0,
+                  Math.min(
+                    1,
+                    (progress - index / resume.careerHistory.length) * resume.careerHistory.length,
+                  ),
+                );
               return (
                 <Box
                   key={index}
@@ -78,7 +80,7 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
                     width: "100%",
                     height: "100%",
                     position: "absolute",
-                    zIndex: index,
+                    zIndex: resume.careerHistory.length - index,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
