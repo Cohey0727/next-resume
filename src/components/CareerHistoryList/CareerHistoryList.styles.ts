@@ -32,7 +32,7 @@ const styles = {
   title: {
     fontSize: "2rem",
     fontWeight: 700,
-    fontFamily: ["Inter", "Arial", "sans-serif"].join(","),
+    fontFamily: ["Quicksand", "Inter", "Arial", "sans-serif"].join(","),
     marginBottom: "1rem",
     textAlign: "center",
     animation: `${fadeIn} 0.5s ease-out`,

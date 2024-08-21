@@ -41,6 +41,7 @@ const styles = {
   },
   title: {
     fontWeight: "bold",
+    fontFamily: ["Quicksand", "Inter", "Arial", "sans-serif"].join(","),
     mb: 4,
     fontSize: {
       xs: "2.5rem",
@@ -60,6 +61,7 @@ const styles = {
       sm: "1.5rem",
       md: "2rem",
     },
+    fontFamily: ["Quicksand", "Inter", "Arial", "sans-serif"].join(","),
   },
   button: {
     backgroundColor: "background.paper",
