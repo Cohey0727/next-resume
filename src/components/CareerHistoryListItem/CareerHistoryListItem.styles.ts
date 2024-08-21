@@ -38,7 +38,6 @@ const styles = {
   sectionTitle: {
     fontWeight: "bold",
     fontFamily: "Roboto",
-    marginBottom: (theme) => theme.spacing(1),
     borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
     paddingBottom: (theme) => theme.spacing(0.5),
   },

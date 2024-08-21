@@ -29,78 +29,57 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
   return (
     <Parallax
       anchor="bottom"
-      background={
-        <div>
-          {resume.careerHistory.map((career, index) => {
-            const positionIndex = index + 1;
-            const durationText = career.duration.end
-              ? `${formatDate(career.duration.start)} - ${formatDate(career.duration.end)}`
-              : `${formatDate(career.duration.start)} - Present`;
-            return (
-              <Typography
-                key={positionIndex}
-                variant="body2"
-                color="textSecondary"
-                sx={{ display: "block", width: "200px", height: "100lvh" }}
-              >
-                {durationText}
-              </Typography>
-            );
-          })}
-        </div>
-      }
+      background={<div style={{ height: `${100 * resume.careerHistory.length}lvh` }} />}
     >
       {(progress) => {
         return (
           <Box sx={styles.root}>
-            <Box>
-              <Typography variant="h2">Career History</Typography>
-            </Box>
-            {resume.careerHistory.map((career, index) => {
-              const positionIndex = index + 1;
-              const itemProgress =
-                1 -
-                Math.max(
-                  0,
-                  Math.min(
-                    1,
-                    (progress - positionIndex / resume.careerHistory.length) *
-                      resume.careerHistory.length,
-                  ),
+            <Typography variant="h2" sx={styles.title}>
+              Career History
+            </Typography>
+            <Box sx={styles.items}>
+              {resume.careerHistory.map((career, index) => {
+                const positionIndex = index + 1;
+                const itemProgress =
+                  1 -
+                  Math.max(
+                    0,
+                    Math.min(
+                      1,
+                      (progress - positionIndex / resume.careerHistory.length) *
+                        resume.careerHistory.length,
+                    ),
+                  );
+                const commonTransforms = [
+                  `translateX(${(1 - itemProgress) * 100}%)`,
+                  `rotate(${tilts[index]}deg)`,
+                  `translate(${offsets[index][0]}px, ${offsets[index][1]}px)`,
+                ];
+                return (
+                  <Box
+                    key={positionIndex}
+                    sx={{
+                      transform: {
+                        xs: [...commonTransforms, `scale(0.92)`].join(" "),
+                        md: [...commonTransforms, `scale(0.8)`].join(" "),
+                      },
+                      transition: "transform 0.5s ease-out, opacity 0.5s ease-out",
+                      transformOrigin: "center center",
+                      width: "100%",
+                      height: "100%",
+                      position: "absolute",
+                      zIndex: resume.careerHistory.length - positionIndex,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "20px",
+                    }}
+                  >
+                    <CareerHistoryListItem career={career} />
+                  </Box>
                 );
-              return (
-                <Box
-                  key={positionIndex}
-                  sx={{
-                    transform: {
-                      xs: [
-                        `translateX(${(1 - itemProgress) * 100}%)`,
-                        `rotate(${tilts[index]}deg)`,
-                        `translate(${offsets[index][0]}px, ${offsets[index][1]}px)`,
-                        `scale(0.92)`,
-                      ].join(" "),
-                      md: [
-                        `translateX(${(1 - itemProgress) * 100}%)`,
-                        `rotate(${tilts[index]}deg)`,
-                        `translate(${offsets[index][0]}px, ${offsets[index][1]}px)`,
-                        `scale(0.8)`,
-                      ].join(" "),
-                    },
-                    transition: "transform 0.5s ease-out, opacity 0.5s ease-out",
-                    width: "100%",
-                    height: "100%",
-                    position: "absolute",
-                    zIndex: resume.careerHistory.length - positionIndex,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    padding: "20px",
-                  }}
-                >
-                  <CareerHistoryListItem career={career} />
-                </Box>
-              );
-            })}
+              })}
+            </Box>
           </Box>
         );
       }}

@@ -1,5 +1,6 @@
 import { keyframes } from "@mui/system";
 import { SxProps, Theme } from "@mui/material/styles";
+import { title } from "process";
 
 const fadeIn = keyframes`
   from {
@@ -20,13 +21,22 @@ const colorChange = keyframes`
 
 const styles = {
   root: {
-    "& .MuiTimelineItem-root:before": {
-      flex: 0,
-      padding: 0,
-    },
     width: "100%",
     height: "100%",
-    position: "absolute",
+    py: 2,
+  },
+  items: {
+    width: "100%",
+    height: "100%",
+    position: "relative",
+  },
+  title: {
+    fontSize: "2rem",
+    fontWeight: 700,
+    fontFamily: ["Inter", "Arial", "sans-serif"].join(","),
+    marginBottom: "1rem",
+    textAlign: "center",
+    animation: `${fadeIn} 0.5s ease-out`,
   },
 } as const satisfies Record<string, SxProps<Theme>>;
 
