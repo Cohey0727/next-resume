@@ -53,6 +53,9 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
       {(progress) => {
         return (
           <Box sx={styles.root}>
+            <Box>
+              <Typography variant="h2">Career History</Typography>
+            </Box>
             {resume.careerHistory.map((career, index) => {
               const positionIndex = index + 1;
               const itemProgress =

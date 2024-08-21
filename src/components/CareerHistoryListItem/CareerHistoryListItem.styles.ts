@@ -6,11 +6,11 @@ const styles = {
     marginBottom: (theme) => theme.spacing(3),
     height: {
       xs: "143vw",
-      md: "100vh",
+      sm: "100vh",
     },
     width: {
       xs: "100vw",
-      md: "70vh",
+      sm: "70vh",
     },
     overflow: "auto",
   },
