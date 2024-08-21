@@ -4,8 +4,14 @@ const styles = {
   paper: {
     p: 4,
     mb: 3,
-    height: "100%",
-    width: "80%",
+    height: {
+      xs: "100vw",
+      md: "100vh",
+    },
+    width: {
+      xs: "70vw",
+      md: "70vh",
+    },
     display: "flex",
     flexDirection: "column",
     backgroundColor: "#fffef7",

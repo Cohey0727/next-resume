@@ -14,7 +14,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Caveat", "Inter", "Arial", "sans-serif"].join(","),
+    fontFamily: ["Handlee", "Inter", "Arial", "sans-serif"].join(","),
   },
   components: {
     MuiChip: {
