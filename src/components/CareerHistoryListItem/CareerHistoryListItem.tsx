@@ -18,11 +18,16 @@ const defaultContainerHeight = 1600;
 const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career }) => {
   const [paperHeight, setPaperHeight] = useState(0);
   useLayoutEffect(() => {
-    const windowHeight = window.innerHeight;
-    const windowWidth = window.innerWidth;
-    // 16:9で表示するために、高さを計算する
-    const heightByWidth = (windowWidth * 16) / 9;
-    setPaperHeight(Math.min(windowHeight, heightByWidth) * 0.92);
+    const calcHeight = () => {
+      const windowHeight = window.innerHeight;
+      const windowWidth = window.innerWidth;
+      const heightByWidth = (windowWidth * 16) / 9;
+      setPaperHeight(Math.min(windowHeight, heightByWidth) * 0.92);
+    };
+    calcHeight();
+    // 画面サイズが変わった時に高さを再計算
+    window.addEventListener("resize", calcHeight);
+    return () => window.removeEventListener("resize", calcHeight);
   }, []);
 
   return (
