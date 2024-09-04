@@ -9,6 +9,9 @@ const styles = {
   },
   featuresParallax: {},
   featuresSection: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     py: {
       xs: 6,
       sm: 8,

@@ -4,8 +4,9 @@ import { Resume } from "@/models/resume";
 
 const resumeJa: Resume = {
   personalInfo: {
+    name: "岡本耕平",
     affiliation: "個人事業主",
-    age: 31,
+    age: 32,
     gender: "男性",
     nearestStation: "王子神谷駅",
     education: "大阪大学基礎工学部",
@@ -139,11 +140,12 @@ const resumeJa: Resume = {
 
 const resumeEn: Resume = {
   personalInfo: {
+    name: "Kohei Okamoto",
     affiliation: "Freelancer",
-    age: 31,
+    age: 32,
     gender: "Male",
     nearestStation: "Oji-Kamiya Station",
-    education: "Osaka University, School of Engineering Science",
+    education: "Osaka University, Electronic Engineering",
     qualifications: ["Driver's License", "Applied Information Technology Engineer"],
     technicalSkills: ["TypeScript", "Python", "AWS", "React"],
     specialties: "Development",

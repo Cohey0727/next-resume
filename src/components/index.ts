@@ -1,7 +1,10 @@
 export * from "./animations";
 export * from "./CareerHistoryList";
 export { default as CareerHistoryList } from "./CareerHistoryList";
+export * from "./containers";
 export * from "./Parallax";
 export { default as Parallax } from "./Parallax";
+export * from "./PrintResume";
+export { default as PrintResume } from "./PrintResume";
 export * from "./Wave";
 export { default as Wave } from "./Wave";

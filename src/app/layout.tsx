@@ -3,7 +3,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Inter } from "next/font/google";
-import { theme } from "@/configs";
+import { themes } from "@/configs";
 import "./global.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,7 +23,7 @@ const RootLayout = (props: RootLayoutProps) => {
     <html lang="ja">
       <body className={inter.className}>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={themes.handWritingTheme}>
             <CssBaseline />
             <main style={{ overflow: "hidden" }}>{children}</main>
           </ThemeProvider>

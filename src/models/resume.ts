@@ -1,4 +1,5 @@
 type PersonalInfo = {
+  name: string;
   affiliation: string;
   age: number;
   gender: string;
