@@ -16,16 +16,20 @@ const formatDate = (dateString: string | undefined) => {
 const defaultContainerHeight = 1600;
 
 const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career }) => {
-  const [windowHeight, setWindowHeight] = useState(0);
+  const [paperHeight, setPaperHeight] = useState(0);
   useLayoutEffect(() => {
-    setWindowHeight(window.innerHeight);
+    const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
+    // 16:9で表示するために、高さを計算する
+    const heightByWidth = (windowWidth * 16) / 9;
+    setPaperHeight(Math.min(windowHeight, heightByWidth) * 0.92);
   }, []);
 
   return (
     <Paper
       sx={styles.paper}
       style={{
-        transform: windowHeight ? `scale(${(windowHeight / defaultContainerHeight) * 0.84})` : "",
+        transform: paperHeight ? `scale(${paperHeight / defaultContainerHeight})` : "",
       }}
     >
       <Grid container spacing={2}>

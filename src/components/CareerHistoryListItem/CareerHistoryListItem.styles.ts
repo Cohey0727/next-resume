@@ -2,8 +2,11 @@ import { SxProps, Theme } from "@mui/material/styles";
 
 const styles = {
   paper: {
-    padding: 5,
+    px: 6,
+    py: 8,
     marginBottom: 3,
+    minWidth: "900px",
+    maxWidth: "900px",
     width: "900px",
     height: "1600px",
     overflow: "auto",
@@ -24,6 +27,7 @@ const styles = {
   position: {
     color: "primary",
     marginBottom: 1,
+    fontSize: 24,
   },
   duration: {
     color: "secondary",
@@ -58,6 +62,7 @@ const styles = {
   skill: {
     backgroundColor: (theme) => theme.palette.background.default,
     border: (theme) => `1px solid ${theme.palette.divider}`,
+    fontSize: 20,
   },
 } satisfies Record<string, SxProps<Theme>>;
 
