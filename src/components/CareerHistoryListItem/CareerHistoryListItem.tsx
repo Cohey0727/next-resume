@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { Typography, Paper, Box, Chip, Grid } from "@mui/material";
 import { CareerHistory } from "@/models/resume";
 import { format, parseISO } from "date-fns";
