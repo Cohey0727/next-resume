@@ -91,7 +91,7 @@ const resumeJa: Resume = {
       technicalStack: {
         languages: ["Dart", "Python", "GraphQL"],
         databases: ["PostgreSQL"],
-        frameworks: ["Flutter", "Firebase", "Python SAM"],
+        frameworks: ["Flutter", "Firebase", "SAM"],
       },
       description:
         "営業支援サービスの開発。アプリおよびバックエンドの設計・実装を担当し、プロジェクトの成功に貢献。",
@@ -227,7 +227,7 @@ const resumeEn: Resume = {
       technicalStack: {
         languages: ["Dart", "Python", "GraphQL"],
         databases: ["PostgreSQL"],
-        frameworks: ["Flutter", "Firebase", "Python SAM"],
+        frameworks: ["Flutter", "Firebase", "SAM"],
       },
       description:
         "Developed a sales support service. Handled both frontend and backend design and implementation, contributing to the project's success.",

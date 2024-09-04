@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   Typography,
   Paper,
@@ -11,6 +11,7 @@ import {
   Theme,
   Avatar,
   Divider,
+  Chip,
 } from "@mui/material";
 import { Timeline, timelineItemClasses } from "@mui/lab";
 import { Resume } from "@/models/resume";
@@ -42,6 +43,7 @@ const styles = {
   },
   listItem: {
     py: 0,
+    px: 0,
   },
   avatar: {
     width: 120,
@@ -61,6 +63,12 @@ const ResumePaper: React.FC<ResumePaperProps> = (props) => {
   const { resume } = props;
   const { personalInfo, careerHistories } = resume;
 
+  const allSkills = useMemo(() => {
+    const skills = resume.careerHistories.flatMap(({ technicalStack }) =>
+      Object.values(technicalStack).flatMap((skills) => skills),
+    );
+    return Array.from(new Set(skills));
+  }, []);
   return (
     <Paper sx={styles.root}>
       <Column mx="-20mm" px="20mm" pt="10mm" pb="10mm" bgcolor="#777">
@@ -136,8 +144,17 @@ const ResumePaper: React.FC<ResumePaperProps> = (props) => {
 
       <Box sx={styles.section}>
         <Typography variant="h6">Specialties</Typography>
+        <Typography>{personalInfo.specialties}</Typography>
       </Box>
-      <Typography>{personalInfo.specialties}</Typography>
+
+      <Box sx={styles.section}>
+        <Typography variant="h6">All Skills</Typography>
+        <Row flexWrap="wrap" gap={1}>
+          {allSkills.map((skill) => (
+            <Chip key={skill} label={skill} />
+          ))}
+        </Row>
+      </Box>
 
       <Divider sx={styles.divider} />
 

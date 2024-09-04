@@ -27,7 +27,9 @@ const Page: React.FC = () => {
       )}
       {mode === "print" && (
         <ThemeProvider theme={themes.formalTheme}>
-          <Button onClick={() => setMode("normal")}>Back</Button>
+          <Button sx={{ "@media print": { display: "none" } }} onClick={() => setMode("normal")}>
+            Back
+          </Button>
           <PrintResume resume={resumeEn} />
         </ThemeProvider>
       )}
