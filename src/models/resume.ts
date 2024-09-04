@@ -1,38 +1,32 @@
-export type Resume = {
-  name: string;
-  contact: Contact;
-  summary: string;
-  careerHistory: CareerHistory[];
-  skills: string[];
+type PersonalInfo = {
+  affiliation: string;
+  age: number;
+  gender: string;
+  nearestStation: string;
+  education: string;
+  qualifications: string[];
+  technicalSkills: string[];
+  specialties: string;
+};
+
+type TechnicalStack = {
   languages: string[];
-  education: Education;
-  licensesCertifications: LicensesCertification[];
+  databases?: string[];
+  serverOs?: string[];
+  frameworks?: string[];
 };
 
-export type Contact = {
-  email: string;
-  phone: string;
+type WorkExperience = {
+  companyName: string;
+  period: [string, string?];
+  role: string;
+  technicalStack: TechnicalStack;
+  description: string;
 };
 
-export type CareerHistory = {
-  position: string;
-  company: string;
-  duration: { start: string; end: string | null };
-  responsibilities: string[];
-  skillsAcquired: string[];
-  achievements: string[];
+type Resume = {
+  personalInfo: PersonalInfo;
+  workExperience: WorkExperience[];
 };
 
-export type Education = {
-  degree: string;
-  school: string;
-  duration: string;
-  thesis: string;
-};
-
-export type LicensesCertification = {
-  name: string;
-  issuer: string;
-  date: string;
-  details: string;
-};
+export type { PersonalInfo, TechnicalStack, WorkExperience, Resume };

@@ -1,17 +1,16 @@
 import React from "react";
-import { Typography, Paper, List, ListItem, ListItemText, Box, Chip, Grid } from "@mui/material";
-import { CareerHistory } from "@/models/resume";
-import { format } from "date-fns";
+import { Typography, Paper, Box, Chip, Grid } from "@mui/material";
+import { WorkExperience } from "@/models/resume";
+import { format, parseISO } from "date-fns";
 import styles from "./CareerHistoryListItem.styles";
-import { style } from "@mui/system";
 
 type CareerHistoryListItemProps = {
-  career: CareerHistory;
+  career: WorkExperience;
 };
 
-const formatDate = (dateString: string | null) => {
+const formatDate = (dateString: string | undefined) => {
   if (!dateString) return "Present";
-  return format(new Date(dateString), "MMM yyyy");
+  return format(parseISO(dateString), "MMM yyyy");
 };
 
 const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career }) => {
@@ -23,7 +22,7 @@ const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career })
             Company
           </Typography>
           <Typography variant="h5" component="h3" sx={styles.companyName}>
-            {career.company}
+            {career.companyName}
           </Typography>
         </Grid>
         <Grid item xs={6}>
@@ -31,7 +30,7 @@ const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career })
             Position
           </Typography>
           <Typography variant="h6" sx={styles.position}>
-            {career.position}
+            {career.role}
           </Typography>
         </Grid>
         <Grid item xs={6}>
@@ -39,47 +38,59 @@ const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career })
             Duration
           </Typography>
           <Typography variant="body1" sx={styles.duration}>
-            {formatDate(career.duration.start)} - {formatDate(career.duration.end)}
+            {formatDate(career.period[0])} - {formatDate(career.period[1])}
           </Typography>
         </Grid>
       </Grid>
 
       <Box sx={styles.sectionContainer}>
-        <Typography variant="h6" sx={styles.sectionTitle}>
-          Responsibilities
+        <Typography variant="h6" sx={styles.sectionTitle} mb={1}>
+          Description
         </Typography>
-        <Box sx={styles.sectionBodyContainer}>
-          <List disablePadding>
-            {career.responsibilities.map((resp, index) => (
-              <ListItem key={index} disablePadding sx={styles.listItem}>
-                <ListItemText primary={resp} sx={styles.listItemText} />
-              </ListItem>
-            ))}
-          </List>
-        </Box>
+        <Typography variant="body1" sx={styles.duration}>
+          {career.description}
+        </Typography>
       </Box>
 
       <Box sx={styles.sectionContainer}>
         <Typography variant="h6" sx={styles.sectionTitle}>
-          Achievements
-        </Typography>
-        <Box sx={styles.sectionBodyContainer}>
-          <List disablePadding>
-            {career.achievements.map((achievement, index) => (
-              <ListItem key={index} disablePadding sx={styles.listItem}>
-                <ListItemText primary={achievement} sx={styles.listItemText} />
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      </Box>
-
-      <Box sx={styles.sectionContainer}>
-        <Typography variant="h6" sx={styles.sectionTitle}>
-          Skills Acquired
+          Languages
         </Typography>
         <Box sx={{ ...styles.skillsContainer, ...styles.sectionBodyContainer }}>
-          {career.skillsAcquired.map((skill, index) => (
+          {career.technicalStack.languages.map((skill, index) => (
+            <Chip key={index} label={skill} sx={styles.skill} />
+          ))}
+        </Box>
+      </Box>
+
+      <Box sx={styles.sectionContainer}>
+        <Typography variant="h6" sx={styles.sectionTitle}>
+          Databases
+        </Typography>
+        <Box sx={{ ...styles.skillsContainer, ...styles.sectionBodyContainer }}>
+          {career.technicalStack.databases?.map((skill, index) => (
+            <Chip key={index} label={skill} sx={styles.skill} />
+          ))}
+        </Box>
+      </Box>
+
+      <Box sx={styles.sectionContainer}>
+        <Typography variant="h6" sx={styles.sectionTitle}>
+          Server Os
+        </Typography>
+        <Box sx={{ ...styles.skillsContainer, ...styles.sectionBodyContainer }}>
+          {career.technicalStack.serverOs?.map((skill, index) => (
+            <Chip key={index} label={skill} sx={styles.skill} />
+          ))}
+        </Box>
+      </Box>
+
+      <Box sx={styles.sectionContainer}>
+        <Typography variant="h6" sx={styles.sectionTitle}>
+          Frameworks
+        </Typography>
+        <Box sx={{ ...styles.skillsContainer, ...styles.sectionBodyContainer }}>
+          {career.technicalStack.frameworks?.map((skill, index) => (
             <Chip key={index} label={skill} sx={styles.skill} />
           ))}
         </Box>

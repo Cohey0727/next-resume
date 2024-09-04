@@ -33,7 +33,7 @@ const styles = {
     color: (theme) => theme.palette.text.secondary,
   },
   sectionContainer: {
-    marginTop: (theme) => theme.spacing(3),
+    marginTop: (theme) => theme.spacing(2),
     py: 1,
   },
   sectionBodyContainer: {
