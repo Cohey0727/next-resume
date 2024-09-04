@@ -16,7 +16,7 @@ type TechnicalStack = {
   frameworks?: string[];
 };
 
-type WorkExperience = {
+type CareerHistory = {
   companyName: string;
   period: [string, string?];
   role: string;
@@ -26,7 +26,7 @@ type WorkExperience = {
 
 type Resume = {
   personalInfo: PersonalInfo;
-  workExperience: WorkExperience[];
+  careerHistories: CareerHistory[];
 };
 
-export type { PersonalInfo, TechnicalStack, WorkExperience, Resume };
+export type { PersonalInfo, TechnicalStack, CareerHistory, Resume };

@@ -13,13 +13,13 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
   const { resume } = props;
 
   const tilts = useMemo(
-    () => resume.workExperience.map(() => Math.random() * 2 - 1),
-    [resume.workExperience],
+    () => resume.careerHistories.map(() => Math.random() * 2 - 1),
+    [resume.careerHistories],
   );
 
   const offsets = useMemo<[number, number][]>(
-    () => resume.workExperience.map(() => [Math.random() * 16 - 8, Math.random() * 16 - 8]),
-    [resume.workExperience],
+    () => resume.careerHistories.map(() => [Math.random() * 16 - 8, Math.random() * 16 - 8]),
+    [resume.careerHistories],
   );
 
   return (
@@ -29,12 +29,12 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
       </Typography>
       <Parallax
         anchor="bottom"
-        background={<div style={{ height: `${100 * resume.workExperience.length}lvh` }} />}
+        background={<div style={{ height: `${100 * resume.careerHistories.length}lvh` }} />}
       >
         {(progress) => {
           return (
             <Box sx={styles.items}>
-              {resume.workExperience.map((career, index) => {
+              {resume.careerHistories.map((career, index) => {
                 const positionIndex = index + 1;
                 const itemProgress =
                   1 -
@@ -42,8 +42,8 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
                     0,
                     Math.min(
                       1,
-                      (progress - positionIndex / resume.workExperience.length) *
-                        resume.workExperience.length,
+                      (progress - positionIndex / resume.careerHistories.length) *
+                        resume.careerHistories.length,
                     ),
                   );
                 const commonTransforms = [
@@ -61,7 +61,7 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
                       width: "100%",
                       height: "100%",
                       position: "absolute",
-                      zIndex: resume.workExperience.length - positionIndex,
+                      zIndex: resume.careerHistories.length - positionIndex,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",

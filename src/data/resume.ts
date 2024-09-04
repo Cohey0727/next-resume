@@ -13,7 +13,7 @@ const resumeJa: Resume = {
     technicalSkills: ["TypeScript", "Python", "AWS", "React"],
     specialties: "開発",
   },
-  workExperience: [
+  careerHistories: [
     {
       companyName: "株式会社ワークスアプリケーションズ",
       period: ["2016-04-01", "2018-10-01"],
@@ -148,7 +148,7 @@ const resumeEn: Resume = {
     technicalSkills: ["TypeScript", "Python", "AWS", "React"],
     specialties: "Development",
   },
-  workExperience: [
+  careerHistories: [
     {
       companyName: "Works Applications Co., Ltd.",
       period: ["2016-04-01", "2018-10-01"],

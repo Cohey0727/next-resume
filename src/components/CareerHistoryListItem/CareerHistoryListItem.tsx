@@ -1,11 +1,11 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Typography, Paper, Box, Chip, Grid } from "@mui/material";
-import { WorkExperience } from "@/models/resume";
+import { CareerHistory } from "@/models/resume";
 import { format, parseISO } from "date-fns";
 import styles from "./CareerHistoryListItem.styles";
 
 type CareerHistoryListItemProps = {
-  career: WorkExperience;
+  career: CareerHistory;
 };
 
 const formatDate = (dateString: string | undefined) => {
