@@ -23,16 +23,16 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
   );
 
   return (
-    <Parallax
-      anchor="bottom"
-      background={<div style={{ height: `${100 * resume.workExperience.length}lvh` }} />}
-    >
-      {(progress) => {
-        return (
-          <Box sx={styles.root}>
-            <Typography variant="h2" sx={styles.title}>
-              Career History
-            </Typography>
+    <Box sx={styles.root}>
+      <Typography variant="h2" sx={styles.title}>
+        Career History
+      </Typography>
+      <Parallax
+        anchor="bottom"
+        background={<div style={{ height: `${100 * resume.workExperience.length}lvh` }} />}
+      >
+        {(progress) => {
+          return (
             <Box sx={styles.items}>
               {resume.workExperience.map((career, index) => {
                 const positionIndex = index + 1;
@@ -55,10 +55,7 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
                   <Box
                     key={positionIndex}
                     sx={{
-                      transform: {
-                        xs: [...commonTransforms, `scale(0.92)`].join(" "),
-                        md: [...commonTransforms, `scale(0.8)`].join(" "),
-                      },
+                      transform: commonTransforms.join(" "),
                       transition: "transform 0.5s ease-out, opacity 0.5s ease-out",
                       transformOrigin: "center center",
                       width: "100%",
@@ -76,10 +73,10 @@ const CareerHistoryList: React.FC<CareerHistoryListProps> = (props) => {
                 );
               })}
             </Box>
-          </Box>
-        );
-      }}
-    </Parallax>
+          );
+        }}
+      </Parallax>
+    </Box>
   );
 };
 

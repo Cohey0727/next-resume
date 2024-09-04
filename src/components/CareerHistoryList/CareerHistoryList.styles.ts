@@ -33,7 +33,7 @@ const styles = {
     fontSize: "2rem",
     fontWeight: 700,
     fontFamily: ["Quicksand", "Inter", "Arial", "sans-serif"].join(","),
-    marginBottom: "1rem",
+    marginBottom: 4,
     textAlign: "center",
     animation: `${fadeIn} 0.5s ease-out`,
   },

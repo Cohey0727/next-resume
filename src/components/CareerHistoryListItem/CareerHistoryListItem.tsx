@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Typography, Paper, Box, Chip, Grid } from "@mui/material";
 import { WorkExperience } from "@/models/resume";
 import { format, parseISO } from "date-fns";
@@ -13,15 +13,27 @@ const formatDate = (dateString: string | undefined) => {
   return format(parseISO(dateString), "MMM yyyy");
 };
 
+const defaultContainerHeight = 1600;
+
 const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career }) => {
+  const [windowHeight, setWindowHeight] = useState(0);
+  useLayoutEffect(() => {
+    setWindowHeight(window.innerHeight);
+  }, []);
+
   return (
-    <Paper sx={styles.paper}>
+    <Paper
+      sx={styles.paper}
+      style={{
+        transform: windowHeight ? `scale(${(windowHeight / defaultContainerHeight) * 0.84})` : "",
+      }}
+    >
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="subtitle2" sx={styles.label}>
+          <Typography variant="h4" sx={styles.label}>
             Company
           </Typography>
-          <Typography variant="h5" component="h3" sx={styles.companyName}>
+          <Typography variant="h3" component="h3" sx={styles.companyName}>
             {career.companyName}
           </Typography>
         </Grid>
@@ -44,7 +56,7 @@ const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career })
       </Grid>
 
       <Box sx={styles.sectionContainer}>
-        <Typography variant="h6" sx={styles.sectionTitle} mb={1}>
+        <Typography variant="h4" sx={styles.sectionTitle} mb={2}>
           Description
         </Typography>
         <Typography variant="body1" sx={styles.duration}>
@@ -53,7 +65,7 @@ const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career })
       </Box>
 
       <Box sx={styles.sectionContainer}>
-        <Typography variant="h6" sx={styles.sectionTitle}>
+        <Typography variant="h4" sx={styles.sectionTitle}>
           Languages
         </Typography>
         <Box sx={{ ...styles.skillsContainer, ...styles.sectionBodyContainer }}>
@@ -64,7 +76,7 @@ const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career })
       </Box>
 
       <Box sx={styles.sectionContainer}>
-        <Typography variant="h6" sx={styles.sectionTitle}>
+        <Typography variant="h4" sx={styles.sectionTitle}>
           Databases
         </Typography>
         <Box sx={{ ...styles.skillsContainer, ...styles.sectionBodyContainer }}>
@@ -75,7 +87,7 @@ const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career })
       </Box>
 
       <Box sx={styles.sectionContainer}>
-        <Typography variant="h6" sx={styles.sectionTitle}>
+        <Typography variant="h4" sx={styles.sectionTitle}>
           Server Os
         </Typography>
         <Box sx={{ ...styles.skillsContainer, ...styles.sectionBodyContainer }}>
@@ -86,7 +98,7 @@ const CareerHistoryListItem: React.FC<CareerHistoryListItemProps> = ({ career })
       </Box>
 
       <Box sx={styles.sectionContainer}>
-        <Typography variant="h6" sx={styles.sectionTitle}>
+        <Typography variant="h4" sx={styles.sectionTitle}>
           Frameworks
         </Typography>
         <Box sx={{ ...styles.skillsContainer, ...styles.sectionBodyContainer }}>
